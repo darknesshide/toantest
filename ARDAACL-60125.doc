@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[#ARDAACL-60125] Mcu_InitRamSection API does not initialize the Retention RAM section follow U5x Hardware User Manual</title>
+    <meta http-equiv="Content-Type" Content="application/vnd.ms-word; charset=UTF-8">
+        <style type="text/css">
+
+.tableBorder, .grid
+{
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableBorder td, .grid td
+{
+    vertical-align: top;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.noPadding
+{
+    padding: 0 !important;
+}
+
+h3 .subText
+{
+    font-size: 60%;
+    font-weight: normal;
+}
+
+.tabLabel
+{
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-bottom:none;
+    padding: 2px;
+    display: inline;
+}
+
+td.blank
+{
+    padding: 0;
+    margin: 0;
+}
+
+.blank td
+{
+    border: none;
+}
+
+#descriptionArea
+{
+    margin: 0;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+hr
+{
+    border-top:1px solid #aaa;
+}
+
+hr.fullcontent
+{
+  height: 15px;
+  padding: 10px 0;
+  background: #fff url('https://jira.renesas.eu/images/icons/hr.gif') no-repeat scroll center;
+}
+
+</style>
+
+</head>
+<body>
+
+<table class="tableBorder" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" width="100%" colspan="2" valign="top">
+                            <h3 class="formtitle">
+                        [ARDAACL-60125]&nbsp;<a href="https://jira.renesas.eu/browse/ARDAACL-60125">Mcu_InitRamSection API does not initialize the Retention RAM section follow U5x Hardware User Manual</a>
+            <span class="subText">
+               Created: 26/Jan/26                   &nbsp;Updated: 16/Mar/26
+
+                                                    &nbsp;Resolved: 16/Mar/26
+                            </span>
+            </h3>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Status:</b></td>
+        <td width="80%">Resolved</td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="https://jira.renesas.eu/secure/BrowseProject.jspa?id=14802">ARD_MCAL_Platform</a></td>
+    </tr>
+
+        <tr>
+            <td><b>Component/s:</b></td>
+            <td>
+                                        <a title="MCU"
+                href="https://jira.renesas.eu/issues/?jql=project%3D14802%20AND%20%22component%22%3D21156%20ORDER%20BY%20priority%20ASC"
+            >MCU</a>                        </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Affects Version/s:</b></td>
+            <td>
+                                        <a title="Ver23.02.00/Ver23.02.00.B U5Lx - U5L2 MP release, Cortst Alpha"
+                href="https://jira.renesas.eu/issues/?jql=project%3D14802%20AND%20%22affectedVersion%22%3D30932%20ORDER%20BY%20priority%20ASC"
+            >Ver23.02.00/Ver23.02.00.B U5Lx</a>                        </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Fix Version/s:</b></td>
+            <td>
+                                        <a title="Ver23.03.00/Ver23.03.00.B U5Lx - U5L1 MP release, Cortst Beta"
+                href="https://jira.renesas.eu/issues/?jql=project%3D14802%20AND%20%22fixVersion%22%3D30934%20ORDER%20BY%20priority%20ASC"
+            >Ver23.03.00/Ver23.03.00.B U5Lx</a>                        </td>
+    </tr>
+    
+    </table>
+
+<br />
+<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type:</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top"  width="30%" >
+            Bug
+        </td>
+
+                    <td bgcolor="#f0f0f0">
+                <b>Priority:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap>
+                Normal
+            </td>
+            </tr>
+    <tr>
+                        <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top"  width="30%" >
+                                            <a class="user-hover" rel="bao.pham.ue@renesas.com" id="word_reporter_bao.pham.ue@renesas.com" href="https://jira.renesas.eu/secure/ViewProfile.jspa?name=bao.pham.ue%40renesas.com">Bao Pham [RVC HSSA4]</a>
+                            </td>
+        
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Assignee:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap  width="30%" >
+                                            <a class="user-hover" rel="bao.pham.ue@renesas.com" id="word_assignee_bao.pham.ue@renesas.com" href="https://jira.renesas.eu/secure/ViewProfile.jspa?name=bao.pham.ue%40renesas.com">Bao Pham [RVC HSSA4]</a>
+                            </td>
+            </tr>
+    	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution:</b>
+		</td>
+		<td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+                            Done
+                    </td>
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Votes:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+                0
+            </td>
+        
+    </tr>
+    
+        <tr>
+        <td bgcolor="#f0f0f0" width="20%">
+            <b>Labels:</b>
+        </td>
+        <td id="labels-701281-value" class="value" bgcolor="#ffffff" valign="top" colspan="3" nowrap>
+                            NA-23023                    </td>
+    </tr>
+    
+    	<tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Σ Remaining Estimate:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+                    </td>
+        		<td bgcolor="#f0f0f0" width="20%"><b>Remaining Estimate:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+            		</td>
+    </tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Σ Time Spent:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+                    </td>
+                <td bgcolor="#f0f0f0" width="20%"><b>Time Spent:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+            		</td>
+	</tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Σ Original Estimate:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+                    </td>
+                <td bgcolor="#f0f0f0" width="20%"><b>Original Estimate:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap>
+                            Not Specified
+            		</td>
+    </tr>
+    
+    </table>
+
+
+
+    <br />
+
+    	<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+            
+
+        
+            <tr>
+            <td bgcolor="#f0f0f0" width="20%" valign="top">
+                <b>Issue Links:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" class="noPadding">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="blank">
+                                            <tr>
+                            <td colspan="4" bgcolor="#f0f0f0">
+                                <b>Cloners</b><br/>
+                            </td>
+                        </tr>
+                                    <tr>
+            <td>
+                clones
+            </td>
+            <td>
+                <a href="https://jira.renesas.eu/browse/ARDAACV-141">
+                     <strike>ARDAACV-141</strike>                 </a>
+            </td>
+            <td>
+                Mcu_InitRamSection API does not initi...
+            </td>
+            <td>
+                Closed
+            </td>
+        </tr>
+                                        <tr>
+            <td>
+                is cloned by
+            </td>
+            <td>
+                <a href="https://jira.renesas.eu/browse/ARDAACL-47932">
+                     <strike>ARDAACL-47932</strike>                 </a>
+            </td>
+            <td>
+                Mcu_InitRamSection API does not initi...
+            </td>
+            <td>
+                Closed
+            </td>
+        </tr>
+                                                <tr>
+                            <td colspan="4" bgcolor="#f0f0f0">
+                                <b>Relates</b><br/>
+                            </td>
+                        </tr>
+                                                                <tr>
+            <td>
+                relates to
+            </td>
+            <td>
+                <a href="https://jira.renesas.eu/browse/ARDAACL-59866">
+                     <strike>ARDAACL-59866</strike>                 </a>
+            </td>
+            <td>
+                [NA-23023][NA-23008][MCU] Change Mana...
+            </td>
+            <td>
+                Done
+            </td>
+        </tr>
+            <tr>
+            <td>
+                relates to
+            </td>
+            <td>
+                <a href="https://jira.renesas.eu/browse/ARDAACL-60248">
+                     ARDAACL-60248                 </a>
+            </td>
+            <td>
+                [NA-23023][MCU] Mcu_InitRamSection AP...
+            </td>
+            <td>
+                Resolved
+            </td>
+        </tr>
+                                        </table>
+            </td>
+        </tr>
+    
+
+
+<tr><td bgcolor="#f0f0f0" width="20%" valign="top"><b>Sub-Tasks:</b></td>
+    <td bgcolor="#ffffff" valign="top">
+        <table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr bgcolor="#f0f0f0">
+                <td>
+                    <b>Key</b><br/>
+                </td>
+                <td>
+                    <b>Summary</b><br/>
+                </td>
+                <td>
+                    <b>Type</b><br/>
+                </td>
+                <td>
+                    <b>Status</b><br/>
+                </td>
+                <td>
+                    <b>Assignee</b><br/>
+                </td>
+            </tr>
+                                            <tr>
+                    <td>
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60214">ARDAACL-60214</a>
+                    </td>
+                    <td valign="top" width="25%">
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60214">MO Analysis</a>
+                    </td>
+                    <td>
+                        PF:Sub-task
+                    </td>
+                    <td>
+                        Analysis
+                    </td>
+                    <td>
+                                                     Toan Pham [RVC]  &nbsp;
+                                            </td>
+                </tr>
+                                                            <tr>
+                    <td>
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60215">ARDAACL-60215</a>
+                    </td>
+                    <td valign="top" width="25%">
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60215">KIL Review</a>
+                    </td>
+                    <td>
+                        PF:Sub-task
+                    </td>
+                    <td>
+                        Open
+                    </td>
+                    <td>
+                                                     Toan Pham [RVC]  &nbsp;
+                                            </td>
+                </tr>
+                                                            <tr>
+                    <td>
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60216">ARDAACL-60216</a>
+                    </td>
+                    <td valign="top" width="25%">
+                        <a href="https://jira.renesas.eu/browse/ARDAACL-60216">[U5Lx] Issue fixing</a>
+                    </td>
+                    <td>
+                        PF:Sub-task
+                    </td>
+                    <td>
+                        Resolved
+                    </td>
+                    <td>
+                                                     Phung Nhi Le [VN]  &nbsp;
+                                            </td>
+                </tr>
+                                    </table>
+    </td>
+</tr>
+
+                        <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Autosar Version:</b></td>
+                <td id="customfield_11254-701281-value" class="value" bgcolor="#ffffff" width="80%">
+
+
+    <div class="shorten" id="customfield_11254-field">
+        							<span>R23-11</span>			            </div>
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Severity:</b></td>
+                <td id="customfield_11656-701281-value" class="value" bgcolor="#ffffff" width="80%">    major
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Safety Related:</b></td>
+                <td id="customfield_12702-701281-value" class="value" bgcolor="#ffffff" width="80%">    Yes
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Due Date (custom):</b></td>
+                <td id="customfield_11945-701281-value" class="value" bgcolor="#ffffff" width="80%">            <span title="30/Jan/26 8:20 AM"><time class="livestamp allow-future" datetime="2026-01-30T08:20:00+0100">30/Jan/2026 8:20 AM</time></span>
+    </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Solution or Proposal:</b></td>
+                <td id="customfield_10302-701281-value" class="value" bgcolor="#ffffff" width="80%">      Add note for parameter McuRamSectionBaseAddress, McuRamSectionSize.<br/>
+Update RameSizeInfo in generation tool.
+  </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Expected Behaviour:</b></td>
+                <td id="customfield_10300-701281-value" class="value" bgcolor="#ffffff" width="80%">      Mcu_InitRamSection API supports initialize the Retention RAM section
+  </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>End User Product Related:</b></td>
+                <td id="customfield_10204-701281-value" class="value" bgcolor="#ffffff" width="80%">    Yes
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Actual Behaviour:</b></td>
+                <td id="customfield_10301-701281-value" class="value" bgcolor="#ffffff" width="80%">      Mcu_InitRamSection API does not initialize the Retention RAM section
+  </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Impacted Products:</b></td>
+                <td id="customfield_10202-701281-value" class="value" bgcolor="#ffffff" width="80%">
+
+
+    <div class="shorten" id="customfield_10202-field">
+        							<span>Code</span>,			        							<span>Generator</span>,			        							<span>PDF</span>			            </div>
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Phase Found:</b></td>
+                <td id="customfield_10205-701281-value" class="value" bgcolor="#ffffff" width="80%">    Design Review
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Root Cause:</b></td>
+                <td id="customfield_12703-701281-value" class="value" bgcolor="#ffffff" width="80%">
+
+
+    <div class="shorten" id="customfield_12703-field">
+        							<span>Generator Tool</span>,			        							<span>Parameter Definition File</span>			            </div>
+</td>
+            </tr>
+                                                                                                        <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Workaround:</b></td>
+                <td id="customfield_13127-701281-value" class="value" bgcolor="#ffffff" width="80%">      This issue always occurs when user invoke Mcu_InitRamSection API.<br/>
+
+  </td>
+            </tr>
+                                            <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Device Family:</b></td>
+                <td id="customfield_12935-701281-value" class="value" bgcolor="#ffffff" width="80%">
+
+
+    <div class="shorten" id="customfield_12935-field">
+        							<span>U5L1</span>,			        							<span>U5L2</span>,			        							<span>U5L4</span>			            </div>
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>PF:Process detecting defect:</b></td>
+                <td id="customfield_15603-701281-value" class="value" bgcolor="#ffffff" width="80%">    AD: Architecture Design
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>PF:Process causing defect:</b></td>
+                <td id="customfield_15604-701281-value" class="value" bgcolor="#ffffff" width="80%">    AD: Architecture Design
+</td>
+            </tr>
+                                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Support Flow Status:</b></td>
+                <td id="customfield_13004-701281-value" class="value" bgcolor="#ffffff" width="80%">    Analysis
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Cloning Analysis Status:</b></td>
+                <td id="customfield_11940-701281-value" class="value" bgcolor="#ffffff" width="80%">    Undefined, Please Check
+</td>
+            </tr>
+                                                                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Customer Information:</b></td>
+                <td id="customfield_13555-701281-value" class="value" bgcolor="#ffffff" width="80%">
+
+
+    <div class="shorten" id="customfield_13555-field">
+        							<span>NA</span>			            </div>
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Baseline start date (WBSGantt):</b></td>
+                <td id="customfield_14302-701281-value" class="value" bgcolor="#ffffff" width="80%">          <span title="26/Jan/26"><time datetime="2026-01-26">26/Jan/26</time></span>
+    </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Baseline finish date (WBSGantt):</b></td>
+                <td id="customfield_14303-701281-value" class="value" bgcolor="#ffffff" width="80%">          <span title="27/Feb/26"><time datetime="2026-02-27">27/Feb/26</time></span>
+    </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Start date (WBSGantt):</b></td>
+                <td id="customfield_14300-701281-value" class="value" bgcolor="#ffffff" width="80%">          <span title="26/Jan/26"><time datetime="2026-01-26">26/Jan/26</time></span>
+    </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Finish date (WBSGantt):</b></td>
+                <td id="customfield_14301-701281-value" class="value" bgcolor="#ffffff" width="80%">          <span title="04/Mar/26"><time datetime="2026-03-04">04/Mar/26</time></span>
+    </td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Progress (WBSGantt):</b></td>
+                <td id="customfield_14304-701281-value" class="value" bgcolor="#ffffff" width="80%">    20
+</td>
+            </tr>
+                                                                                                                                                                                                                                                                </table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td id="descriptionArea">
+            <p><b><span class="error">&#91;Description&#93;</span></b><br/>
+According to U5Lx Hardware User Manual version 1.02.<br/>
+MCU module has to support init Retention RAM section following HWM.</p>
+
+<p><b><span class="error">&#91;Impact to Customer/User&#93;</span></b> <br/>
+Event: When user configure parameter 'McuRamSectionSize' initial size from ‘McuRamSectionBaseAddress' is scoped for Retention RAM,<br/>
+User cannot initialize the RAM section for Retention RAM successfully as provided from the RAM Sector setting when invoking Mcu_InitRamSection API.</p>
+
+<p><b><span class="error">&#91;Issue Condition&#93;</span></b><br/>
+In container McuRamSectorSettingConf:<br/>
++McuRamDefaultValue = 0<br/>
++McuRamSectionBaseAddress = 0x2C000000<br/>
++McuRamSectionSize = 4<br/>
++McuRamSectionWriteSize = 4</p>
+            <br/>
+        </td>
+    </tr>
+    </table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="grid" style="margin: 0;">
+                <tr id="comment-header-2563748"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="bao.pham.ue@renesas.com" id="word_commented_bao.pham.ue@renesas.com" href="https://jira.renesas.eu/secure/ViewProfile.jspa?name=bao.pham.ue%40renesas.com">Bao Pham [RVC HSSA4]</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">29/Jan/26</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-2563748"><td bgcolor="#ffffff">
+            <p>Hello <a href="https://jira.renesas.eu/secure/ViewProfile.jspa?name=Nhi.Le.jx%40renesas.com" class="user-hover" rel="Nhi.Le.jx@renesas.com">Phung Nhi Le [VN]</a> san</p>
+
+<p>could you please update ticket description, analysis follow <a href="https://jira.renesas.eu/confluence/display/AMP2021/Task02+-+RD-CD+for+fixing+Bug?" class="external-link" rel="nofollow">https://jira.renesas.eu/confluence/display/AMP2021/Task02+-+RD-CD+for+fixing+Bug?</a></p>
+
+<p>BR,<br/>
+Bao</p>
+        </td></tr>
+            </table>
+Generated at Wed Mar 18 12:23:44 CET 2026 by Toan Pham [RVC] using Jira 9.12.29#9120029-sha1:4cb96399cf8001776e5427348baedd2b6572143b.
+
+</body>
+</html>
