@@ -1,0 +1,46 @@
+Hello Toan Pham,
+
+In our meeting you ask for some background material describing the RA concept in more detail. I added you a snapshot of the PPT collecting the conclusions of the discussed features (TUBE-SRD-Concept2.pptx).
+
+The main focus was the functionality inside TUBE. The interaction with the Autosar CPU were only touched at points were a conceptional hardware impact was seen. The detailed work on the outside interface we postponed until the TUBE hardware concept is agreed. 
+
+If you think about your Autosar side software, please have the primary TUBE requirement in mid: “TUBE looks like hardware module to Communication Stack Software” (slide 8). Even there will be CPUs inside TUBE, there is no inter-CPU-communication with the Autosar world. The firmware on these CPUs assists only the hardware at points where flexibility is needed.
+
+For you I recommend the pages 21 to 24 about the general interaction and pages 72 to 77 providing the idea of TUBE’s bus master data interface.
+
+Best Regards
+Christian Mardmöller
+
+-----Original Appointment-----
+From: Christian Mardmoeller 
+Sent: Mittwoch, 25. März 2026 13:05
+To: Christian Mardmoeller; Toan Pham; Stefan Singer
+Cc: Bao Pham; Khanh Nguyen; Tuan Nguyen; Luat Nguyen; San Duong; Khuong Vo; Huy Huynh; Hung Nguyen; Phuong Nguyen; Luan Le; Hung Pham; Nghia Do; Duy Nguyen
+Subject: Alignment SW planning for TUBE/U5H
+When: Donnerstag, 26. März 2026 10:30-11:00 (UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna.
+Where: Microsoft Teams Meeting
+
+Hello Toan Pham
+
+I propose this time (10:30 CET), even later would be no problem from Europe side. An alternate would be Friday between 8:00 and 9:00 CET
+Please forward to your team members, planned for this activity.
+
+Best Regards
+Christian Mardmöller
+
+------
+Hello @Stefan Singer san @Christian Mardmoeller san
+
+I have read your materials about TUBE (new IP for routing acc in U5H) but not quite sure to understand it.
+Can we have a short call within this week to better understand your expectations?
+From the SW perspective (Gateway / MCAL / CDD), I would like to align early on:
++ the expected level of offloading to TUBE
++ the scope and target of SW responsibilities
+This alignment would help us prepare internally and ensure that SW planning matches the intended TUBE concept and use cases.
+If you are available, a 30 minute call today or this week would be highly appreciated.
+
+Best regards,
+Toan Pham
+
+________________________________________________________________________________
+
