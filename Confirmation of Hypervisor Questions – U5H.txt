@@ -1,0 +1,429 @@
+From: Ed Sarrat <ed.sarrat.yk@renesas.com>
+Sent: Thursday, May 7, 2026 9:37 PM
+To: Alfredo Baratta <alfredo.baratta.pz@renesas.com>; Norman Gundlach <norman.gundlach.wm@renesas.com>; Toan Pham <toan.pham.px@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>; Juergen Himmelberg <juergen.himmelberg@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: RE: Confirmation of Hypervisor Questions – U5H
+
+Alfredo/Juergen/Norman,
+
+I think the best approach is to capture this as a requirement, but continue to monitor the market for Hypervisor adoption and lead customer use cases.  Once we have a clearer view of how customers want to use it we can better specify the scope of the required Hypervisor required and allocate a rational level of investment.
+
+ 
+
+Juergen- as we will be transitioning the U5H to product team ownership, would appreciate your perspective on this approach.
+
+ 
+
+Ed
+
+ 
+
+From: Alfredo Baratta <alfredo.baratta.pz@renesas.com>
+Sent: Thursday, May 7, 2026 3:42 AM
+To: Norman Gundlach <norman.gundlach.wm@renesas.com>; Toan Pham <toan.pham.px@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>; Juergen Himmelberg <juergen.himmelberg@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hi Norman
+
+ 
+
+This is a business decision.
+
+ 
+
+Technically, I want everyone to be aware of the limitations of R52 in terms of FFI.
+
+ 
+
+Example
+
+On U5H24 we do have up to 8 Cores. (8 + 2 Config) 
+If independent applications need to be executed with FFI, and customers does not want to pay for an Hypervisor => only 3 applications can be integrated (one per R52 cluster)
+ 
+
+If customers want FFI within the same R52 cluster, they must use software running above the OS (EL2) to manage the common GIC.
+
+ 
+
+If we offer a cheap solution, we have an advantage, if not, we are same level of competitors using other R52 products .
+
+ 
+
+I will let Ed and Jürgen comment.
+
+ 
+
+ 
+
+BR/
+
+Alfredo
+
+ 
+
+Alfredo Baratta
+
+Automotive System Applications Engineering Director, HPC/HMBD
+
+Renesas Electronics
+
+ 
+
+From: Norman Gundlach <norman.gundlach.wm@renesas.com>
+Sent: Thursday, May 7, 2026 09:58
+To: Alfredo Baratta <alfredo.baratta.pz@renesas.com>; Toan Pham <toan.pham.px@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: RE: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hey Alfredo,
+
+ 
+
+No one uses a Hypervisor at the moment, and the question is if we want to kick-off a full-blown internal development for something that is likely never to be used, because partner’s solutions already exist off the shelf.
+
+ 
+
+I am not in favor of kicking this off without a reasonable business case behind the internal development.
+
+ 
+
+I just want to remind everyone on the AUTOSAR OS that we’ve developed internally for U2B-E that has no usage for any customer, AFTER it has been developed.
+
+Not even Denso or Toyota want to use it.
+
+ 
+
+Let’s avoid this.
+
+ 
+
+Best regards,
+
+Norman
+
+ 
+
+From: Alfredo Baratta <alfredo.baratta.pz@renesas.com>
+Sent: Wednesday, May 6, 2026 1:09 PM
+To: Toan Pham <toan.pham.px@renesas.com>; Norman Gundlach <norman.gundlach.wm@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hi guys
+
+ 
+
+Inside same clusters, R52+ cores share same GIC.
+
+If customers want to have 2 different applications running in same cluster, a kind of Hypervisor has to be used to guarantee FFI.
+
+ 
+
+If we want to simplify customer like and reduce cost, we may want to consider to offer a king of Hypervisor.
+
+ 
+
+BR/
+
+Alfredo
+
+ 
+
+Alfredo Baratta
+
+Automotive System Applications Engineering Director, HPC/HMBD
+
+Renesas Electronics
+
+ 
+
+From: Toan Pham <toan.pham.px@renesas.com>
+Sent: Wednesday, May 6, 2026 12:29
+To: Norman Gundlach <norman.gundlach.wm@renesas.com>; Alfredo Baratta <alfredo.baratta.pz@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hello @Kyouhei Narita san @Tomokazu Ishida san
+
+ 
+
+>Where is this request coming from?
+
+Could you share information about the request for Hypervisor ?
+
+ 
+
+Best regards,
+
+Toan Pham
+
+ 
+
+From: Norman Gundlach <norman.gundlach.wm@renesas.com>
+Sent: Friday, April 24, 2026 6:47 PM
+To: Toan Pham <toan.pham.px@renesas.com>; Alfredo Baratta <alfredo.baratta.pz@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: RE: Confirmation of Hypervisor Questions – U5H
+
+Hey all,
+
+My technical knowledge on Hypervisor SW is very limited.
+
+Frankly, I am not understanding why we are considering a Hypervisor SW as a self-development approach.
+
+We have plenty of 3rd party partners that offer Hypervisor SW.
+
+Where is this request coming from?
+
+Best regards,
+
+Norman
+
+From: Toan Pham <toan.pham.px@renesas.com>
+Sent: Friday, April 24, 2026 5:43 AM
+To: Alfredo Baratta <alfredo.baratta.pz@renesas.com>; Norman Gundlach <norman.gundlach.wm@renesas.com>; Ed Sarrat <ed.sarrat.yk@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+++ add @Alfredo Baratta san @Norman Gundlach san
+
+Hi @Alfredo Baratta san @Norman Gundlach san,
+
+Could you support questions in attached file?
+
+Best regards,
+
+Toan Pham
+
+From: Toan Pham <toan.pham.px@renesas.com>
+Sent: Thursday, April 23, 2026 2:31 PM
+To: Ed Sarrat <ed.sarrat.yk@renesas.com>; Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hello @Ed Sarrat san
+
+We have some questions in attached file "U5H_Hypervisor_QnA.xlsx" related to U5H Hypervisor?
+
+Could you please support to confirm it ?
+
+Thank you.
+
+@Noriyuki Tanaka san Thank you for your information.
+
+Best regards,
+
+Toan Pham
+
+ 
+
+From: Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>
+Sent: Thursday, April 23, 2026 2:14 PM
+To: Toan Pham <toan.pham.px@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hello Toan-san,
+
+Unfortunately, I'm not a designer of system architecture.
+
+I had read your questions but couldn't answer your questions.
+
+On the other hand, I assume your quesitons should be resolved.
+
+Could you please contact Ed-san to find out who the right person is to answer your questions ?
+
+Because Ed-san is leading U5H product planning team (U5H Obeya).
+
+Ed-san can assign someone from members of the U5H Obeya team.
+
+I'm confident Ed-san will be able to guide you.
+
+Best Regards,
+
+N.Tanaka
+
+ 
+
+​​
+
+差出人: Toan Pham <toan.pham.px@renesas.com>
+送信: 2026 年 4 月 23 日 (木曜日) 15:54
+宛先: Noriyuki Tanaka <noriyuki.tanaka.dn@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+件名: Re: Confirmation of Hypervisor Questions – U5H
+
+++ Noriyuki Tanaka - san (SRD PIC)
+
+Hello @Noriyuki Tanaka san
+
+ 
+
+VN SW team investigated U5H Hypervisor and have some questions in attached file "U5H_Hypervisor_QnA.xlsx".
+
+Could you please support to confirm it ?
+
+ 
+
+Thank you very much for your support.
+
+Best regards,
+
+Toan Pham
+
+From: Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Sent: Wednesday, April 22, 2026 4:20 PM
+To: Phuong Nguyen <phuong.nguyen.pz@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Toan Pham <toan.pham.px@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Subject: RE: Confirmation of Hypervisor Questions – U5H
+
+Hello Toan Pham, and Phuong Nguyen,
+
+Also I’m not expert to R52+ processor.
+
+Could you see Arm R52+ TRM(Technical Reference Manual)?
+
+Yes possible, please see chapter9 MPU.
+
+This chapter describe memory protection and virtualization scheme of R52+ processor.
+
+Best regards,
+
+T.Kawahito
+
+*****************************************
+
+Takayuki Kawahito
+
+MCU System Architecture
+
+HPC MCU Business Division
+
+Renesas Electronics, Corp
+
+Office: +81-50-5896-6135
+
+takayuki.kawahito.vf@renesas.com
+
+*****************************************
+
+From: Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Sent: Wednesday, April 22, 2026 12:27 PM
+To: Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>; Mandar Joshi <mandar.joshi.xn@renesas.com>; Toan Pham <toan.pham.px@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Kyouhei Narita <kyouhei.narita.xk@renesas.com>; Tomokazu Ishida <tomokazu.ishida.xw@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+Hello @Takayuki Kawahito san
+
+Let me re-send the email from @Toan Pham san.
+
+Could you please check it?
+
+--
+
+phuong
+
+From: Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Sent: Wednesday, April 22, 2026 10:18 AM
+To: Mandar Joshi <mandar.joshi.xn@renesas.com>; Toan Pham <toan.pham.px@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Subject: RE: Confirmation of Hypervisor Questions – U5H
+
+Hello Mandar,
+
+I don’t know the U5H hypervisor concept.
+
+1.When we need answer and fix spec of hypervisor?
+
+2.Who considered hypervisor concept for U5H until now?
+
+3.I can’t find attached file.
+
+Best regards,
+
+T.Kawahito
+
+*****************************************
+
+Takayuki Kawahito
+
+MCU System Architecture
+
+HPC MCU Business Division
+
+Renesas Electronics, Corp
+
+Office: +81-50-5896-6135
+
+takayuki.kawahito.vf@renesas.com
+
+ 
+
+*****************************************
+
+ 
+
+From: Mandar Joshi <mandar.joshi.xn@renesas.com>
+Sent: Wednesday, April 22, 2026 12:06 PM
+To: Toan Pham <toan.pham.px@renesas.com>; Takayuki Kawahito <takayuki.kawahito.vf@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Subject: Re: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+@Takayuki Kawahito-san,
+
+ 
+
+Could you please help answer Toan’s questions.
+
+ 
+
+—Mandar
+
+ 
+
+Get Outlook for iOS
+
+From: Toan Pham <toan.pham.px@renesas.com>
+Sent: Wednesday, April 22, 2026 8:25:11 AM
+To: Mandar Joshi <mandar.joshi.xn@renesas.com>
+Cc: Tien Nguyen <tien.nguyen.yn@renesas.com>; Bao Pham <bao.pham.ue@renesas.com>; Luan Le <luan.le.wh@renesas.com>; Hung Pham <hung.pham.xm@renesas.com>; Nghia Do <nghia.do.xk@renesas.com>; Duy Nguyen <duy.nguyen.yg@renesas.com>; Phuong Nguyen <phuong.nguyen.pz@renesas.com>
+Subject: Confirmation of Hypervisor Questions – U5H
+
+ 
+
+Hello @Mandar Joshi san 
+
+ 
+
+I’m Toan Pham from the VN SW team, currently working on the U5H Hypervisor investigation.
+
+We have several questions relating to technical aspects of the Hypervisor concept in the attached file “U5H_R52_Hypervisor_SW_v1.pptx”.
+
+Could you please help check questions in "U5H_Hypervisor_QnA.xlsx" or delegate it to PIC?
+
+Your feedback will help us better understand the architecture and proceed with feasibility assessment and effort estimation.
+
+ 
+
+Thank you very much for your support.
+
+ 
+
+Best regards,
+
+Toan Pham
